@@ -1,0 +1,13 @@
+Test Number,Test Name,Testing Method,Coverage Goal,Input List,Target,Expected Brute Sum,Brute Force Subset,Brute Force Sum,Brute Force Pass,Greedy Subset,Greedy Sum,Greedy Valid,Greedy Matches Optimal,Overall Pass,Description
+1,Target is zero,"Black-box, boundary value",Empty subset / target zero case,"[3, 5, 7]",0,0,[],0,True,[],0,True,True,True,The empty subset should be valid when the target is zero.
+2,Single element equals target,"Black-box, equivalence class",Exact match with one element,[10],10,10,[10],10,True,[10],10,True,True,True,The only element exactly equals the target.
+3,Single element below target,"Black-box, equivalence class",Feasible non-exact single element,[7],10,7,[7],7,True,[7],7,True,True,True,"The only element is below the target, so it should be selected."
+4,Single element above target,"Black-box, equivalence class",Single item skipped because it exceeds target,[12],10,0,[],0,True,[],0,True,True,True,"The only element is too large, so the empty subset is best."
+5,Exact subset exists,"Black-box, normal case",Exact subset exists,"[3, 5, 7, 10]",15,15,"[5, 10]",15,True,"[10, 5]",15,True,True,True,"A valid exact subset exists, such as [5, 10]."
+6,No exact subset exists,"Black-box, equivalence class","No exact solution, best feasible sum returned","[2, 6, 8, 13]",11,10,"[2, 8]",10,True,"[8, 2]",10,True,True,True,"No subset equals 11, but the best feasible sum is 10."
+7,Multiple exact solutions,"Black-box, equivalence class",Multiple correct optimal subsets,"[1, 3, 4, 5, 6]",9,9,"[3, 6]",9,True,"[6, 3]",9,True,True,True,"Multiple subsets can reach the target, such as [3, 6] or [4, 5]."
+8,Duplicate values,"Black-box, equivalence class",Repeated values treated as separate items,"[4, 4, 4, 6]",8,8,"[4, 4]",8,True,[6],6,True,False,True,The implementation should handle repeated values correctly.
+9,All values larger than target,"Black-box, boundary value",All items skipped / empty subset returned,"[20, 30, 40]",10,0,[],0,True,[],0,True,True,True,"No value can be selected, so the empty subset is best."
+10,Greedy misses optimal,"White-box, decision coverage",Greedy add/skip branches and non-optimal heuristic result,"[10, 9, 6, 5]",11,11,"[6, 5]",11,True,[10],10,True,False,True,"Brute force finds [6, 5], while greedy selects [10]."
+11,Greedy exact match,"White-box, statement coverage",Greedy reaches exact target branch,"[9, 8, 6, 5]",14,14,"[9, 5]",14,True,"[9, 5]",14,True,True,True,"Greedy selects [9, 5] and reaches the target exactly."
+12,Greedy skip branch,"White-box, decision coverage",Greedy selects one item and skips later items,"[15, 8, 7]",15,15,[15],15,True,[15],15,True,True,True,Greedy selects 15 and must skip later values because they exceed the target.
